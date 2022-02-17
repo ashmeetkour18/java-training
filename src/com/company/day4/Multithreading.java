@@ -37,6 +37,8 @@ public class Multithreading {
         thread3.setPriority(Thread.MAX_PRIORITY);
         // Very high probability that a thread will get more of CPU time.
 
+
+
         // thread3 we assigned it a high priority max..
         // in some cases it finished at the last.
         // core1 , core2 , core3
