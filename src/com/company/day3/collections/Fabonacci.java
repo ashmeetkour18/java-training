@@ -1,4 +1,4 @@
-package com.company.day3.collections;
+  package com.company.day3.collections;
 
 public class Fabonacci {
     static int n1 = 0, n2 = 1, n3;
