@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm">
+    <class name="com.company.day8.demo.Car" table="Car_Day_8">
+        <id name="id" type="int">
+            <column name="id"></column>
+            <generator class="increment">
+
+            </generator>
+        </id>
+        <property name="speed" column="speed" type="double"/>
+        <property name="name" column="name" type="string"/>
+        <property name="horsePower" type="float" />
+        <property name="maker" type="character" />
+
+    </class>
+</hibernate-mapping>
