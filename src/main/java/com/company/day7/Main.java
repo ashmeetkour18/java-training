@@ -1,3 +1,4 @@
+/*
 package com.company.day7;
 
 import org.hibernate.Session;
@@ -6,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 
+*/
 /*
 Hibernate - ORM
 ORM -> Object relational mapping
@@ -49,7 +51,8 @@ we need to provide it details
         Note: When we insert the entry into the table with hibernate in the above examples we are not passing the ID in the java code
         But are using the empty constructor to create the object and then assigning the properties using setters and getters
 
- */
+ *//*
+
 public class Main {
 
     public static void main(String[] args) {
@@ -61,7 +64,9 @@ public class Main {
         // and what are the data types.
         // mapping the object fields to the table columns
         // class is mapped to a table
-        Car car = new Car( "car", 600, 8000000);
+        */
+/**//*
+Car car = new Car( "car", 600, 8000000);
 
         Configuration configuration = new Configuration();
         configuration.configure();
@@ -73,11 +78,13 @@ public class Main {
         session.persist(car);
         transaction.commit();
         session.close();
-        /*
+        */
+/*
         Configurations are done using
         (i) XML
         (ii) Annotations
-         */
+         *//*
+
 
     }
-}
+}*/

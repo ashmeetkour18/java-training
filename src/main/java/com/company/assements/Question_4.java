@@ -3,7 +3,7 @@ package com.company.assements;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Question_4 {
+public  Question_4 {
     private static boolean isSymmetricMatrix(int[][] matrix, int row) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < row; j++) {

@@ -19,7 +19,7 @@ public class CustomIdGenerator implements StandardGenerator {
         Random r = new Random( System.currentTimeMillis() );
         return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
 
-        /*
+     /*
         The logic for generation of custom ID
         sub1EMPID,
         sub2EMPID

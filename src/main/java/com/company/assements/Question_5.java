@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Question_5 {
+public  Question_5 {
     private static List<Integer> kthMaxfromList(List<Integer> list, int k) {
         List<Integer> integerList = new ArrayList<>();
         if (list.size() >= k) {
