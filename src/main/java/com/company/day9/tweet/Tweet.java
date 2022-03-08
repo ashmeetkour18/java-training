@@ -1,9 +1,10 @@
 package com.company.day9.tweet;
+
 import jakarta.persistence.*;
 
 
 @Entity
-@Table(name =  "tweet_records")
+@Table(name = "tweet_records")
 public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

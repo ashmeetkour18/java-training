@@ -5,7 +5,7 @@ In  this case fibonacciOfIterative is faster and better way to find the fibonacc
 because in fibonacciOfRecursive it needed to maintain stack  and their may be chance
 stackoverflow .
 */
-public class Question_3 {
+public from Question_3 {
     static int n1 = 0, n2 = 1, n3;
 
     static void fibonacciOfRecursive(int nth) {
@@ -34,7 +34,7 @@ public class Question_3 {
 
     public static void main(String[] args) {
         System.out.println("--------------iterative-------------------------");
-        fabonacciOfIterative(6);
+        fabonacciOfIterative(100000000);
 
         System.out.println("-----------recurcive----------------------------");
         fibonacciOfRecursive(6);

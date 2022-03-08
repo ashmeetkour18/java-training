@@ -57,9 +57,9 @@ public class TweeterDriver {
         // you change the table name
         // mysql server, postgres, MS SQL, Oracle Database
         // the query is smaller
-        List<?> tweets = session.createQuery
-                ("select count(tweet),userId  group by userId ").list();
-        System.out.println(tweets);
+        List<Object[]> tweets = session.createQuery
+                ("select tweet,userId,count(tweet)  from Tweet group by userId ORDER BY count(tweet) DESC limit 1 ").list();
+        tweets.forEach(s -> System.out.println("tweet -> " + s[0] + "  userId - " + s[1] + "  count - " + s[2]));
 
     }
 

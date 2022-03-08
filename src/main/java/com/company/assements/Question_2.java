@@ -17,7 +17,7 @@ public class Question_2 {
     }
 
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(1, 2, 6, 4, 5);
-        System.out.println(isListContainSum(list, 11));
+        List<Integer> list = Arrays.asList(1, 2, 6, 4, 6);
+        System.out.println(isListContainSum(list, 12));
     }
 }

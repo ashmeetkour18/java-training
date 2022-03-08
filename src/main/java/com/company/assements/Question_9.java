@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Question_9 {
+public  Question_9 {
 
     private static void removeNegativeIntegers(List<Integer> integers) {
         integers.removeIf(integer -> integer < 0);

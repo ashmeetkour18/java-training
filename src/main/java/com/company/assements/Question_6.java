@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Question_6 {
+public clas Question_6 {
     private static List<Integer> filterEvenFromList(List<Integer> list) {
         return list.stream().filter(integer -> integer % 2 == 0).collect(Collectors.toList());
     }
