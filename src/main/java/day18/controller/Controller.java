@@ -42,7 +42,7 @@ public class Controller {
         String password = requestBodyMap.get("password").get(0);
         ModelAndView modelAndView = new ModelAndView("login");
         User userByEmail = userDao.findByEmail(email);
-        if (userByEmail != null) {
+        if (userByEmail == null) {
             boolean validEmail = isValidEmail(email);
             boolean b = containsInvalidChars(name);
             System.out.println(b + "-----------------");
@@ -166,6 +166,7 @@ public class Controller {
                 Tweet tweet1 = new Tweet(tweet, Timestamp.from(Instant.now()), user);
                 ModelAndView modelAndView = new ModelAndView("success");
                 tweeterDao.saveTweet(tweet1);
+
                 return modelAndView;
             }
         }
