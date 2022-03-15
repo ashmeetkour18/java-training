@@ -42,7 +42,7 @@ public class Controller {
         String password = requestBodyMap.get("password").get(0);
         ModelAndView modelAndView = new ModelAndView("login");
         User userByEmail = userDao.findByEmail(email);
-        if (userByEmail == null) {
+        if (userByEmail.getEmail() == null) {
             boolean validEmail = isValidEmail(email);
             boolean b = containsInvalidChars(name);
             System.out.println(b + "-----------------");
@@ -56,13 +56,13 @@ public class Controller {
     }
 
     @GetMapping("/fetchUser")
-    ModelAndView fetchUser(@RequestParam String email) {
+    ModelAndView fetchUser(@RequestBody String email) {
         User user = userDao.findByEmail(email);
         if (user != null) {
             ModelAndView modelAndView = new ModelAndView("users");
-            modelAndView.getModel().put("userEmail", user.getEmail());
-            modelAndView.getModel().put("passwordUser", user.getPassword());
             modelAndView.getModel().put("users", userDao.findAll().stream().filter(user_ -> user_.getId() != user.getId()).collect(Collectors.toList()));
+            modelAndView.getModel().put("userEmail", email);
+            modelAndView.getModel().put("passwordUser", user.getPassword());
             return modelAndView;
         }
         return errorMessageModelAndView("Data not matched");
@@ -103,7 +103,7 @@ public class Controller {
 
     private ModelAndView errorMessageModelAndView(String message) {
         ModelAndView modelAndView = new ModelAndView("error");
-        modelAndView.getModel().put("message", message);
+        modelAndView.getModel().put("error", message);
         return modelAndView;
     }
 
@@ -175,7 +175,6 @@ public class Controller {
 
     @GetMapping("/follow")
     public ModelAndView follow(@RequestParam MultiValueMap<String, String> requestBodyMap) {
-
         String userEmail = requestBodyMap.get("userEmail").get(0);
         String password = requestBodyMap.get("password").get(0);
         String followerEmail = requestBodyMap.get("followerEmail").get(0);
@@ -183,11 +182,16 @@ public class Controller {
             User user = userDao.findByEmail(userEmail);
             if (userEmail != followerEmail && password.equals(user.getPassword()) && userEmail.equals(user.getEmail())) {
                 User followerUser = userDao.findByEmail(followerEmail);
-                Follower follower = new Follower(followerUser.getId(), user);
-                followerDao.saveFollower(follower);
-                ModelAndView modelAndView = new ModelAndView("success");
-
-                return modelAndView;
+                List<Follower> followersOfUser = followerDao.findAll(user.getId()).stream().filter(follower -> follower.getFollowerUserId() == followerUser.getId()).collect(Collectors.toList());
+                if (followersOfUser.size() == 0) {
+                    Follower follower = new Follower(followerUser.getId(), user);
+                    followerDao.saveFollower(follower);
+                    ModelAndView modelAndView = new ModelAndView("profile");
+                    modelAndView.getModel().put("email", userEmail);
+                    modelAndView.getModel().put("name", user.getName());
+                    return modelAndView;
+                }
+                return errorMessageModelAndView("you are already follower");
             }
         }
         return errorMessageModelAndView("Error");
