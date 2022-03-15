@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_spring")
+public
 class User {
 
     @Id
@@ -13,7 +14,26 @@ class User {
     @Column(unique = true)
     private String email;
     private String password;
+    private String visibility = "PUBLIC";
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", visibility='" + visibility + '\'' +
+                '}';
+    }
+
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
 
     public User() {
     }
@@ -22,11 +42,6 @@ class User {
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + '}';
     }
 
     public Integer getId() {
